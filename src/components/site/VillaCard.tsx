@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { formatPrice } from "@/lib/format";
+import { ImagePlaceholder } from "./ImagePlaceholder";
+
 
 export interface VillaCardData {
   slug: string;
