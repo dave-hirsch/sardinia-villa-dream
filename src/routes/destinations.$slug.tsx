@@ -2,6 +2,8 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchDestinationBySlug, fetchVillasByDestination, fetchArticles } from "@/lib/content";
 import { VillaCard } from "@/components/site/VillaCard";
+import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
+
 
 export const Route = createFileRoute("/destinations/$slug")({
   loader: async ({ params }) => {
