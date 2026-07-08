@@ -113,8 +113,8 @@ function VillaDetail() {
             </div>
           </div>
           <div className="md:text-right space-y-3 md:min-w-[220px]">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-olive/60">{t("villa.from")}</p>
-            <p className="font-serif text-3xl text-clay">{formatPrice(villa.price_from)}<span className="text-base text-olive/70"> {t("villa.perWeek")}</span></p>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-olive/60">Price</p>
+            <p className="font-serif text-3xl text-clay">Upon request</p>
             <button
               onClick={() => setShowEnquiry(true)}
               className="bg-sea text-sand px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] hover:bg-sea/90"
