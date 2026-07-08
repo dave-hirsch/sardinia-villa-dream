@@ -40,7 +40,7 @@ export const Route = createFileRoute("/villas/$slug")({
             image: villa.cover_image,
             address: { "@type": "PostalAddress", addressLocality: villa.location, addressRegion: "Sardinia", addressCountry: "IT" },
             numberOfRooms: villa.bedrooms,
-            priceRange: `From €${villa.price_from}/week`,
+            priceRange: `Upon request`,
           }),
         },
       ],
