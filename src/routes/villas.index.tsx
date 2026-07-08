@@ -59,7 +59,7 @@ function VillasList() {
   }, [villasQ.data, search, pool, seaView]);
 
   const updateSort = (sort: NonNullable<typeof search.sort>) =>
-    navigate({ search: (s) => ({ ...s, sort }), replace: true });
+    navigate({ search: (s: z.infer<typeof searchSchema>) => ({ ...s, sort }), replace: true });
 
   const clear = () => navigate({ search: {}, replace: true });
 

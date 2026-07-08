@@ -130,7 +130,7 @@ function VillaDetail() {
         {villa.amenities.length > 0 && (
           <Block title={t("villa.amenities")}>
             <ul className="grid sm:grid-cols-2 gap-y-2 text-olive">
-              {villa.amenities.map((a) => (
+              {villa.amenities.map((a: string) => (
                 <li key={a} className="flex items-start gap-2"><span className="text-clay mt-1">·</span>{a}</li>
               ))}
             </ul>
@@ -165,7 +165,7 @@ function VillaDetail() {
         <section className="max-w-7xl mx-auto px-6 pb-16">
           <span className="eyebrow block mb-6">Gallery</span>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-            {gallery.map((g, i) => (
+            {gallery.map((g: string, i: number) => (
               <button key={i} onClick={() => setLightbox(g)} className="aspect-square overflow-hidden bg-stone-100">
                 <img src={g} alt="" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </button>
