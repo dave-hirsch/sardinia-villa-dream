@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { fetchVillaBySlug, fetchVillas, fetchExperiences } from "@/lib/content";
-import { formatPrice } from "@/lib/format";
+
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { VillaCard } from "@/components/site/VillaCard";
 import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/villas/$slug")({
             image: villa.cover_image,
             address: { "@type": "PostalAddress", addressLocality: villa.location, addressRegion: "Sardinia", addressCountry: "IT" },
             numberOfRooms: villa.bedrooms,
-            priceRange: `From €${villa.price_from}/week`,
+            priceRange: `Upon request`,
           }),
         },
       ],
@@ -113,8 +113,8 @@ function VillaDetail() {
             </div>
           </div>
           <div className="md:text-right space-y-3 md:min-w-[220px]">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-olive/60">{t("villa.from")}</p>
-            <p className="font-serif text-3xl text-clay">{formatPrice(villa.price_from)}<span className="text-base text-olive/70"> {t("villa.perWeek")}</span></p>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-olive/60">Price</p>
+            <p className="font-serif text-3xl text-clay">Upon request</p>
             <button
               onClick={() => setShowEnquiry(true)}
               className="bg-sea text-sand px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] hover:bg-sea/90"
@@ -236,7 +236,7 @@ function VillaDetail() {
           onClick={() => setShowEnquiry(true)}
           className="w-full bg-clay text-sand py-3 text-[11px] font-medium uppercase tracking-[0.2em]"
         >
-          {t("villa.enquire")} · {t("villa.from")} {formatPrice(villa.price_from)}
+          {t("villa.enquire")} · Price upon request
         </button>
       </div>
     </div>
