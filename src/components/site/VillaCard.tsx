@@ -27,7 +27,10 @@ export function VillaCard({ villa, aspect = "aspect-[3/4]" }: { villa: VillaCard
             loading="lazy"
             className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[900ms] ease-out"
           />
-        ) : null}
+        ) : (
+          <ImagePlaceholder />
+        )}
+
       </div>
       <div className="mt-5 space-y-1">
         <div className="flex justify-between items-baseline gap-4">
