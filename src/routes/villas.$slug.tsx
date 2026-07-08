@@ -236,7 +236,7 @@ function VillaDetail() {
           onClick={() => setShowEnquiry(true)}
           className="w-full bg-clay text-sand py-3 text-[11px] font-medium uppercase tracking-[0.2em]"
         >
-          {t("villa.enquire")} · {t("villa.from")} {formatPrice(villa.price_from)}
+          {t("villa.enquire")} · Price upon request
         </button>
       </div>
     </div>
