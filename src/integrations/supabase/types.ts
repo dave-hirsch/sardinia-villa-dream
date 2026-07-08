@@ -14,16 +14,312 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      articles: {
+        Row: {
+          content: string | null
+          cover_image: string | null
+          created_at: string
+          destination_slug: string | null
+          excerpt: string | null
+          id: string
+          meta_description: string | null
+          meta_title: string | null
+          published_at: string
+          slug: string
+          title: string
+        }
+        Insert: {
+          content?: string | null
+          cover_image?: string | null
+          created_at?: string
+          destination_slug?: string | null
+          excerpt?: string | null
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          published_at?: string
+          slug: string
+          title: string
+        }
+        Update: {
+          content?: string | null
+          cover_image?: string | null
+          created_at?: string
+          destination_slug?: string | null
+          excerpt?: string | null
+          id?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          published_at?: string
+          slug?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      destinations: {
+        Row: {
+          cover_image: string | null
+          created_at: string
+          gallery: string[]
+          id: string
+          intro: string | null
+          meta_description: string | null
+          meta_title: string | null
+          name: string
+          slug: string
+          tips: string | null
+        }
+        Insert: {
+          cover_image?: string | null
+          created_at?: string
+          gallery?: string[]
+          id?: string
+          intro?: string | null
+          meta_description?: string | null
+          meta_title?: string | null
+          name: string
+          slug: string
+          tips?: string | null
+        }
+        Update: {
+          cover_image?: string | null
+          created_at?: string
+          gallery?: string[]
+          id?: string
+          intro?: string | null
+          meta_description?: string | null
+          meta_title?: string | null
+          name?: string
+          slug?: string
+          tips?: string | null
+        }
+        Relationships: []
+      }
+      enquiries: {
+        Row: {
+          adults: number
+          budget: number | null
+          children: number
+          created_at: string
+          date_from: string | null
+          date_to: string | null
+          email: string
+          flexible_dates: boolean
+          id: string
+          message: string | null
+          name: string
+          phone: string | null
+          preferred_area: string | null
+          services_needed: string[]
+          source: string | null
+          status: string
+          villa_slug: string | null
+        }
+        Insert: {
+          adults?: number
+          budget?: number | null
+          children?: number
+          created_at?: string
+          date_from?: string | null
+          date_to?: string | null
+          email: string
+          flexible_dates?: boolean
+          id?: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          preferred_area?: string | null
+          services_needed?: string[]
+          source?: string | null
+          status?: string
+          villa_slug?: string | null
+        }
+        Update: {
+          adults?: number
+          budget?: number | null
+          children?: number
+          created_at?: string
+          date_from?: string | null
+          date_to?: string | null
+          email?: string
+          flexible_dates?: boolean
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          preferred_area?: string | null
+          services_needed?: string[]
+          source?: string | null
+          status?: string
+          villa_slug?: string | null
+        }
+        Relationships: []
+      }
+      experiences: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          id: string
+          image: string | null
+          meta_description: string | null
+          meta_title: string | null
+          short_description: string | null
+          slug: string
+          title: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image?: string | null
+          meta_description?: string | null
+          meta_title?: string | null
+          short_description?: string | null
+          slug: string
+          title: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image?: string | null
+          meta_description?: string | null
+          meta_title?: string | null
+          short_description?: string | null
+          slug?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      villas: {
+        Row: {
+          air_conditioning: boolean
+          amenities: string[]
+          availability: string | null
+          bathrooms: number
+          beach_distance: string | null
+          bedrooms: number
+          cin_code: string | null
+          cover_image: string | null
+          created_at: string
+          description: string | null
+          destination_slug: string | null
+          featured: boolean
+          gallery: string[]
+          id: string
+          lat: number | null
+          lng: number | null
+          location: string
+          meta_description: string | null
+          meta_title: string | null
+          name: string
+          pool: boolean
+          price_from: number
+          sea_view: boolean
+          short_description: string | null
+          sleeps: number
+          slug: string
+          tags: string[]
+        }
+        Insert: {
+          air_conditioning?: boolean
+          amenities?: string[]
+          availability?: string | null
+          bathrooms?: number
+          beach_distance?: string | null
+          bedrooms?: number
+          cin_code?: string | null
+          cover_image?: string | null
+          created_at?: string
+          description?: string | null
+          destination_slug?: string | null
+          featured?: boolean
+          gallery?: string[]
+          id?: string
+          lat?: number | null
+          lng?: number | null
+          location: string
+          meta_description?: string | null
+          meta_title?: string | null
+          name: string
+          pool?: boolean
+          price_from?: number
+          sea_view?: boolean
+          short_description?: string | null
+          sleeps?: number
+          slug: string
+          tags?: string[]
+        }
+        Update: {
+          air_conditioning?: boolean
+          amenities?: string[]
+          availability?: string | null
+          bathrooms?: number
+          beach_distance?: string | null
+          bedrooms?: number
+          cin_code?: string | null
+          cover_image?: string | null
+          created_at?: string
+          description?: string | null
+          destination_slug?: string | null
+          featured?: boolean
+          gallery?: string[]
+          id?: string
+          lat?: number | null
+          lng?: number | null
+          location?: string
+          meta_description?: string | null
+          meta_title?: string | null
+          name?: string
+          pool?: boolean
+          price_from?: number
+          sea_view?: boolean
+          short_description?: string | null
+          sleeps?: number
+          slug?: string
+          tags?: string[]
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "editor"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +446,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "editor"],
+    },
   },
 } as const
