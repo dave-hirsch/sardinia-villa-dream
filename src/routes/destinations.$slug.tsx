@@ -36,11 +36,14 @@ function DestinationDetail() {
 
   return (
     <div>
-      {destination.cover_image && (
-        <div className="aspect-[21/9] overflow-hidden">
+      <div className="aspect-[21/9] overflow-hidden">
+        {destination.cover_image ? (
           <img src={destination.cover_image} alt={destination.name} className="w-full h-full object-cover" />
-        </div>
-      )}
+        ) : (
+          <ImagePlaceholder />
+        )}
+      </div>
+
       <section className="max-w-4xl mx-auto px-6 py-16">
         <span className="eyebrow">Destination</span>
         <h1 className="font-serif text-4xl md:text-6xl text-sea leading-[1.05] mt-3">{destination.name}</h1>
