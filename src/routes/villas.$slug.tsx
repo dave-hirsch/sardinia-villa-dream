@@ -68,10 +68,13 @@ function VillaDetail() {
       {/* Hero slider */}
       <section className="relative bg-black/5">
         <div className="aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden bg-stone-100">
-          {gallery[galleryIdx] && (
+          {gallery[galleryIdx] ? (
             <img src={gallery[galleryIdx]} alt={villa.name} className="w-full h-full object-cover" />
+          ) : (
+            <ImagePlaceholder />
           )}
         </div>
+
         {gallery.length > 1 && (
           <div className="absolute bottom-6 right-6 flex gap-2">
             <button
