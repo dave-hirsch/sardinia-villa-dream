@@ -126,8 +126,6 @@ function VillasList() {
           </div>
         </div>
       </section>
-
-      <div className="hidden">{Link.name}</div>
     </div>
   );
 }
