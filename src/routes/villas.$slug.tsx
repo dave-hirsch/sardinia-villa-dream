@@ -6,6 +6,8 @@ import { fetchVillaBySlug, fetchVillas, fetchExperiences } from "@/lib/content";
 import { formatPrice } from "@/lib/format";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { VillaCard } from "@/components/site/VillaCard";
+import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
+
 
 export const Route = createFileRoute("/villas/$slug")({
   loader: async ({ params }) => {
