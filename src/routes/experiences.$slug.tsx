@@ -1,5 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { fetchExperienceBySlug } from "@/lib/content";
+import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
+
 
 export const Route = createFileRoute("/experiences/$slug")({
   loader: async ({ params }) => {
@@ -28,11 +30,14 @@ function ExperienceDetail() {
   const { experience } = Route.useLoaderData();
   return (
     <div>
-      {experience.image && (
-        <div className="aspect-[21/9] overflow-hidden">
+      <div className="aspect-[21/9] overflow-hidden">
+        {experience.image ? (
           <img src={experience.image} alt={experience.title} className="w-full h-full object-cover" />
-        </div>
-      )}
+        ) : (
+          <ImagePlaceholder />
+        )}
+      </div>
+
       <article className="max-w-3xl mx-auto px-6 py-16 md:py-24">
         <span className="eyebrow">{experience.category}</span>
         <h1 className="font-serif text-4xl md:text-6xl text-sea leading-[1.05] mt-3">{experience.title}</h1>
