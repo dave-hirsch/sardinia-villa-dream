@@ -1,5 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { fetchExperienceBySlug } from "@/lib/content";
+import { ImagePlaceholder } from "@/components/site/ImagePlaceholder";
+
 
 export const Route = createFileRoute("/experiences/$slug")({
   loader: async ({ params }) => {
