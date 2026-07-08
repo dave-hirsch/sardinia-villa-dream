@@ -11,25 +11,27 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { CookieBanner } from "@/components/site/CookieBanner";
+import "@/lib/i18n";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+    <div className="min-h-screen bg-sand">
+      <Header />
+      <div className="max-w-2xl mx-auto text-center py-32 px-6">
+        <p className="eyebrow mb-4">404</p>
+        <h1 className="font-serif text-5xl text-sea mb-4">Page not found</h1>
+        <p className="text-olive/80 mb-8">The page you're looking for doesn't exist or has been moved.</p>
+        <Link
+          to="/"
+          className="inline-block bg-sea text-sand px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] hover:bg-sea/90"
+        >
+          Return home
+        </Link>
       </div>
+      <Footer />
     </div>
   );
 }
@@ -42,32 +44,25 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+    <div className="min-h-screen bg-sand">
+      <Header />
+      <div className="max-w-2xl mx-auto text-center py-32 px-6">
+        <p className="eyebrow mb-4">Something went wrong</p>
+        <h1 className="font-serif text-4xl text-sea mb-4">This page didn't load</h1>
+        <p className="text-olive/80 mb-8">Please try again, or head back home.</p>
+        <div className="flex flex-wrap justify-center gap-3">
           <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            onClick={() => { router.invalidate(); reset(); }}
+            className="bg-sea text-sand px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] hover:bg-sea/90"
           >
             Try again
           </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
+          <a href="/" className="border border-black/15 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] hover:border-clay hover:text-clay">
             Go home
           </a>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
@@ -77,21 +72,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "My Sardinian Villa · Private villas in southern Sardinia" },
+      { name: "description", content: "A small, personally chosen collection of private villas across southern Sardinia. Enquiries answered by Marion within 24 hours." },
+      { name: "author", content: "My Sardinian Villa" },
+      { property: "og:title", content: "My Sardinian Villa" },
+      { property: "og:description", content: "Private villas across the south of Sardinia, personally chosen by Marion." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "My Sardinian Villa" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "My Sardinian Villa",
+          description: "Private villas across the south of Sardinia, personally chosen by Marion.",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -103,24 +106,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
+      <head><HeadContent /></head>
+      <body>{children}<Scripts /></body>
     </html>
   );
 }
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="min-h-screen flex flex-col bg-sand">
+        <Header />
+        <main className="flex-1"><Outlet /></main>
+        <Footer />
+        <CookieBanner />
+      </div>
     </QueryClientProvider>
   );
 }

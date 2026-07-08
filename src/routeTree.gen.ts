@@ -9,38 +9,246 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ListYourPropertyRouteImport } from './routes/list-your-property'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VillasIndexRouteImport } from './routes/villas.index'
+import { Route as GuideIndexRouteImport } from './routes/guide.index'
+import { Route as ExperiencesIndexRouteImport } from './routes/experiences.index'
+import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
+import { Route as VillasSlugRouteImport } from './routes/villas.$slug'
+import { Route as GuideSlugRouteImport } from './routes/guide.$slug'
+import { Route as ExperiencesSlugRouteImport } from './routes/experiences.$slug'
+import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
 
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListYourPropertyRoute = ListYourPropertyRouteImport.update({
+  id: '/list-your-property',
+  path: '/list-your-property',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VillasIndexRoute = VillasIndexRouteImport.update({
+  id: '/villas/',
+  path: '/villas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideIndexRoute = GuideIndexRouteImport.update({
+  id: '/guide/',
+  path: '/guide/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperiencesIndexRoute = ExperiencesIndexRouteImport.update({
+  id: '/experiences/',
+  path: '/experiences/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
+  id: '/destinations/',
+  path: '/destinations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VillasSlugRoute = VillasSlugRouteImport.update({
+  id: '/villas/$slug',
+  path: '/villas/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideSlugRoute = GuideSlugRouteImport.update({
+  id: '/guide/$slug',
+  path: '/guide/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperiencesSlugRoute = ExperiencesSlugRouteImport.update({
+  id: '/experiences/$slug',
+  path: '/experiences/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsSlugRoute = DestinationsSlugRouteImport.update({
+  id: '/destinations/$slug',
+  path: '/destinations/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/list-your-property': typeof ListYourPropertyRoute
+  '/privacy': typeof PrivacyRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/experiences/$slug': typeof ExperiencesSlugRoute
+  '/guide/$slug': typeof GuideSlugRoute
+  '/villas/$slug': typeof VillasSlugRoute
+  '/destinations/': typeof DestinationsIndexRoute
+  '/experiences/': typeof ExperiencesIndexRoute
+  '/guide/': typeof GuideIndexRoute
+  '/villas/': typeof VillasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/list-your-property': typeof ListYourPropertyRoute
+  '/privacy': typeof PrivacyRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/experiences/$slug': typeof ExperiencesSlugRoute
+  '/guide/$slug': typeof GuideSlugRoute
+  '/villas/$slug': typeof VillasSlugRoute
+  '/destinations': typeof DestinationsIndexRoute
+  '/experiences': typeof ExperiencesIndexRoute
+  '/guide': typeof GuideIndexRoute
+  '/villas': typeof VillasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/list-your-property': typeof ListYourPropertyRoute
+  '/privacy': typeof PrivacyRoute
+  '/destinations/$slug': typeof DestinationsSlugRoute
+  '/experiences/$slug': typeof ExperiencesSlugRoute
+  '/guide/$slug': typeof GuideSlugRoute
+  '/villas/$slug': typeof VillasSlugRoute
+  '/destinations/': typeof DestinationsIndexRoute
+  '/experiences/': typeof ExperiencesIndexRoute
+  '/guide/': typeof GuideIndexRoute
+  '/villas/': typeof VillasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faq'
+    | '/list-your-property'
+    | '/privacy'
+    | '/destinations/$slug'
+    | '/experiences/$slug'
+    | '/guide/$slug'
+    | '/villas/$slug'
+    | '/destinations/'
+    | '/experiences/'
+    | '/guide/'
+    | '/villas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faq'
+    | '/list-your-property'
+    | '/privacy'
+    | '/destinations/$slug'
+    | '/experiences/$slug'
+    | '/guide/$slug'
+    | '/villas/$slug'
+    | '/destinations'
+    | '/experiences'
+    | '/guide'
+    | '/villas'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faq'
+    | '/list-your-property'
+    | '/privacy'
+    | '/destinations/$slug'
+    | '/experiences/$slug'
+    | '/guide/$slug'
+    | '/villas/$slug'
+    | '/destinations/'
+    | '/experiences/'
+    | '/guide/'
+    | '/villas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  ListYourPropertyRoute: typeof ListYourPropertyRoute
+  PrivacyRoute: typeof PrivacyRoute
+  DestinationsSlugRoute: typeof DestinationsSlugRoute
+  ExperiencesSlugRoute: typeof ExperiencesSlugRoute
+  GuideSlugRoute: typeof GuideSlugRoute
+  VillasSlugRoute: typeof VillasSlugRoute
+  DestinationsIndexRoute: typeof DestinationsIndexRoute
+  ExperiencesIndexRoute: typeof ExperiencesIndexRoute
+  GuideIndexRoute: typeof GuideIndexRoute
+  VillasIndexRoute: typeof VillasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/list-your-property': {
+      id: '/list-your-property'
+      path: '/list-your-property'
+      fullPath: '/list-your-property'
+      preLoaderRoute: typeof ListYourPropertyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +256,80 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/villas/': {
+      id: '/villas/'
+      path: '/villas'
+      fullPath: '/villas/'
+      preLoaderRoute: typeof VillasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide/': {
+      id: '/guide/'
+      path: '/guide'
+      fullPath: '/guide/'
+      preLoaderRoute: typeof GuideIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiences/': {
+      id: '/experiences/'
+      path: '/experiences'
+      fullPath: '/experiences/'
+      preLoaderRoute: typeof ExperiencesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations/': {
+      id: '/destinations/'
+      path: '/destinations'
+      fullPath: '/destinations/'
+      preLoaderRoute: typeof DestinationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/villas/$slug': {
+      id: '/villas/$slug'
+      path: '/villas/$slug'
+      fullPath: '/villas/$slug'
+      preLoaderRoute: typeof VillasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide/$slug': {
+      id: '/guide/$slug'
+      path: '/guide/$slug'
+      fullPath: '/guide/$slug'
+      preLoaderRoute: typeof GuideSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiences/$slug': {
+      id: '/experiences/$slug'
+      path: '/experiences/$slug'
+      fullPath: '/experiences/$slug'
+      preLoaderRoute: typeof ExperiencesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations/$slug': {
+      id: '/destinations/$slug'
+      path: '/destinations/$slug'
+      fullPath: '/destinations/$slug'
+      preLoaderRoute: typeof DestinationsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  ListYourPropertyRoute: ListYourPropertyRoute,
+  PrivacyRoute: PrivacyRoute,
+  DestinationsSlugRoute: DestinationsSlugRoute,
+  ExperiencesSlugRoute: ExperiencesSlugRoute,
+  GuideSlugRoute: GuideSlugRoute,
+  VillasSlugRoute: VillasSlugRoute,
+  DestinationsIndexRoute: DestinationsIndexRoute,
+  ExperiencesIndexRoute: ExperiencesIndexRoute,
+  GuideIndexRoute: GuideIndexRoute,
+  VillasIndexRoute: VillasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
