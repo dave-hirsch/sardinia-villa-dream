@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ListYourPropertyRouteImport } from './routes/list-your-property'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -23,10 +24,18 @@ import { Route as VillasSlugRouteImport } from './routes/villas.$slug'
 import { Route as GuideSlugRouteImport } from './routes/guide.$slug'
 import { Route as ExperiencesSlugRouteImport } from './routes/experiences.$slug'
 import { Route as DestinationsSlugRouteImport } from './routes/destinations.$slug'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ListYourPropertyRoute = ListYourPropertyRouteImport.update({
@@ -94,6 +103,24 @@ const DestinationsSlugRoute = DestinationsSlugRouteImport.update({
   path: '/destinations/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -101,7 +128,10 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/list-your-property': typeof ListYourPropertyRoute
+  '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/experiences/$slug': typeof ExperiencesSlugRoute
   '/guide/$slug': typeof GuideSlugRoute
@@ -110,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/experiences/': typeof ExperiencesIndexRoute
   '/guide/': typeof GuideIndexRoute
   '/villas/': typeof VillasIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -117,7 +148,10 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/list-your-property': typeof ListYourPropertyRoute
+  '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/experiences/$slug': typeof ExperiencesSlugRoute
   '/guide/$slug': typeof GuideSlugRoute
@@ -126,6 +160,7 @@ export interface FileRoutesByTo {
   '/experiences': typeof ExperiencesIndexRoute
   '/guide': typeof GuideIndexRoute
   '/villas': typeof VillasIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,7 +169,10 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/list-your-property': typeof ListYourPropertyRoute
+  '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/destinations/$slug': typeof DestinationsSlugRoute
   '/experiences/$slug': typeof ExperiencesSlugRoute
   '/guide/$slug': typeof GuideSlugRoute
@@ -143,6 +181,7 @@ export interface FileRoutesById {
   '/experiences/': typeof ExperiencesIndexRoute
   '/guide/': typeof GuideIndexRoute
   '/villas/': typeof VillasIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -152,7 +191,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/list-your-property'
+    | '/mcp'
     | '/privacy'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/destinations/$slug'
     | '/experiences/$slug'
     | '/guide/$slug'
@@ -161,6 +203,7 @@ export interface FileRouteTypes {
     | '/experiences/'
     | '/guide/'
     | '/villas/'
+    | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -168,7 +211,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/list-your-property'
+    | '/mcp'
     | '/privacy'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/destinations/$slug'
     | '/experiences/$slug'
     | '/guide/$slug'
@@ -177,6 +223,7 @@ export interface FileRouteTypes {
     | '/experiences'
     | '/guide'
     | '/villas'
+    | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
@@ -184,7 +231,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/list-your-property'
+    | '/mcp'
     | '/privacy'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/destinations/$slug'
     | '/experiences/$slug'
     | '/guide/$slug'
@@ -193,6 +243,7 @@ export interface FileRouteTypes {
     | '/experiences/'
     | '/guide/'
     | '/villas/'
+    | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -201,7 +252,10 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   ListYourPropertyRoute: typeof ListYourPropertyRoute
+  McpRoute: typeof McpRoute
   PrivacyRoute: typeof PrivacyRoute
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   DestinationsSlugRoute: typeof DestinationsSlugRoute
   ExperiencesSlugRoute: typeof ExperiencesSlugRoute
   GuideSlugRoute: typeof GuideSlugRoute
@@ -210,6 +264,7 @@ export interface RootRouteChildren {
   ExperiencesIndexRoute: typeof ExperiencesIndexRoute
   GuideIndexRoute: typeof GuideIndexRoute
   VillasIndexRoute: typeof VillasIndexRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -219,6 +274,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/list-your-property': {
@@ -312,6 +374,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DestinationsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -321,7 +404,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   ListYourPropertyRoute: ListYourPropertyRoute,
+  McpRoute: McpRoute,
   PrivacyRoute: PrivacyRoute,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   DestinationsSlugRoute: DestinationsSlugRoute,
   ExperiencesSlugRoute: ExperiencesSlugRoute,
   GuideSlugRoute: GuideSlugRoute,
@@ -330,6 +417,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExperiencesIndexRoute: ExperiencesIndexRoute,
   GuideIndexRoute: GuideIndexRoute,
   VillasIndexRoute: VillasIndexRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
