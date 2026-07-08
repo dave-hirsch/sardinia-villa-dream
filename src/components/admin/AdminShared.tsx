@@ -163,7 +163,7 @@ export function useTable<T extends { id: string }>(table: TableName, orderBy = "
     queryFn: async () => {
       const { data, error } = await supabase.from(table).select("*").order(orderBy, { ascending: asc });
       if (error) throw error;
-      return (data ?? []) as T[];
+      return (data ?? []) as unknown as T[];
     },
   });
 
@@ -171,8 +171,9 @@ export function useTable<T extends { id: string }>(table: TableName, orderBy = "
     mutationFn: async (row: Partial<T> & { id?: string }) => {
       const { data, error } = await supabase.from(table).upsert(row as never).select().single();
       if (error) throw error;
-      return data as T;
+      return data as unknown as T;
     },
+
     onSuccess: () => {
       toast.success("Saved");
       qc.invalidateQueries({ queryKey: ["admin", table] });
