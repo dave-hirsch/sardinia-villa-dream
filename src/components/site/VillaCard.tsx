@@ -36,7 +36,7 @@ export function VillaCard({ villa, aspect = "aspect-[3/4]" }: { villa: VillaCard
         <div className="flex justify-between items-baseline gap-4">
           <h3 className="font-serif text-xl text-sea">{villa.name}</h3>
           <span className="text-sm font-medium text-clay whitespace-nowrap">
-            {t("villa.from")} {formatPrice(villa.price_from)} {t("villa.perWeek")}
+            Price upon request
           </span>
         </div>
         <p className="text-sm text-olive/70">
