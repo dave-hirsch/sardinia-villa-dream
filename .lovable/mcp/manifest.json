@@ -1,0 +1,195 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "my-sardinian-villa",
+      "version": "0.1.0",
+      "title": "My Sardinian Villa"
+    },
+    "tools": [
+      {
+        "name": "list_destinations",
+        "title": "List destinations",
+        "description": "List the southern Sardinia destinations covered by the collection.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_villas",
+        "title": "List villas",
+        "description": "List private villas in the My Sardinian Villa collection. Optionally filter by destination slug or featured only.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "destination_slug": {
+              "type": "string",
+              "description": "Filter by destination slug (e.g. 'costa-smeralda')."
+            },
+            "featured_only": {
+              "type": "boolean",
+              "description": "Only return featured villas."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "description": "Max rows (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_villa",
+        "title": "Get villa details",
+        "description": "Fetch the full details of a single villa by its slug.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Villa slug, e.g. 'villa-smeralda'."
+            }
+          },
+          "required": [
+            "slug"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_experiences",
+        "title": "List experiences",
+        "description": "List curated experiences (chef, boat, wine, etc.) offered alongside stays.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string",
+              "description": "Optional category filter."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "submit_enquiry",
+        "title": "Submit an enquiry",
+        "description": "Send a booking enquiry to Marion. She personally replies within 24 hours. Only submit with the caller's explicit confirmation of the details.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 320
+            },
+            "phone": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "date_from": {
+              "type": "string",
+              "description": "ISO date YYYY-MM-DD"
+            },
+            "date_to": {
+              "type": "string",
+              "description": "ISO date YYYY-MM-DD"
+            },
+            "flexible_dates": {
+              "type": "boolean"
+            },
+            "adults": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "children": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 30
+            },
+            "budget": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "preferred_area": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "villa_slug": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "services_needed": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 80
+              }
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 4000
+            }
+          },
+          "required": [
+            "name",
+            "email",
+            "adults"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
