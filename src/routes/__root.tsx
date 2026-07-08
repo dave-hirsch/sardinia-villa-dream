@@ -130,7 +130,9 @@ function RootComponent() {
         <main className="flex-1"><Outlet /></main>
         <Footer />
         <CookieBanner />
+        <Toaster />
       </div>
     </QueryClientProvider>
+
   );
 }
